@@ -1,0 +1,25 @@
+use AMQ2
+
+a. db.AMQ2.find().count()
+
+b. db.AMQ2.findOne({},{_id:0})
+
+c. db.AMQ2.find({ fechaEmision:{$gt:ISODate("2014-02-23T00:00:00.000Z")},nroFactura:{$lt:1500}}).sort({"cliente.region":1,"cliente.cuit":1})
+
+d. db.AMQ2.find({"item.producto":"CORREA 10mm"},{_id:0,cliente:1}).sort({"cliente.apellido":1})
+
+e. db.AMQ2.find({ nroFactura:{$gt:2500,$lt:3000}},{_id:0,"cliente.apellido":1,"cliente.nombre":1})
+
+f. db.AMQ2.find({nroFactura: {$in:[5000,600,700,8000]}},{_id:0,fechaVencimiento:1})
+
+g. db.AMQ2.find({"cliente.apellido":{ $regex: /^Z/}}).sort({nroFactura:1}).limit(5)
+
+h. db.AMQ2.find({$or:[{"cliente.region":"CENTRO"},{condPago:"CONTADO"}]},{_id:0,nroFactura:1}).sort({nroFactura:-1}).limit(5).skip(5)
+
+i. db.AMQ2.find({"cliente.apellido":{$nin:["Zavasi","Malinez"]}})
+
+j.  db.AMQ2.find({"item.cantidad":15},{_id:0,"item.producto":1})
+
+db.AMQ2.find({"item":{$elemMatch:{cantidad:15}}},{_id:0,item:{$elemMatch:{cantidad:15}}})
+
+k. db.AMQ2.findOne({"cliente.cuit":2038373771, "condPago": '30 Ds FF', "fechaVencimiento":{$gt:ISODate("2014-03-20T00:00:00.000Z"),$lt:ISODate("2014-03-24T00:00:00.000Z")}})
