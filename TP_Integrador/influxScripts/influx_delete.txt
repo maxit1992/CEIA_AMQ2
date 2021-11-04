@@ -1,0 +1,6 @@
+user: admin
+pass: 8 letters
+admin token BjUgOzZ3jhI6duhKPIOQiiNmxD7vHqrpsaPuQVSognmHfkTAyoKHtSQPiXQHz6vth2TRE922ZVb7WmeRzRJbrw==
+
+
+influx delete --org Maxi -t BjUgOzZ3jhI6duhKPIOQiiNmxD7vHqrpsaPuQVSognmHfkTAyoKHtSQPiXQHz6vth2TRE922ZVb7WmeRzRJbrw== --bucket HydraulicSystem --start 2020-03-01T00:00:00Z --stop 2021-11-19T00:00:00Z

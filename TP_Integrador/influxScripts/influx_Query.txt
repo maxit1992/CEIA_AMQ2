@@ -1,0 +1,18 @@
+curl --get http://localhost:8086/query? ^
+  --header "Authorization: Token BjUgOzZ3jhI6duhKPIOQiiNmxD7vHqrpsaPuQVSognmHfkTAyoKHtSQPiXQHz6vth2TRE922ZVb7WmeRzRJbrw==" ^
+  --data-urlencode "q=SHOW DATABASES"
+  
+  
+curl --request POST ^
+http://localhost:8086/api/v2/query?org=Maxi  ^
+ --header "Authorization: Token BjUgOzZ3jhI6duhKPIOQiiNmxD7vHqrpsaPuQVSognmHfkTAyoKHtSQPiXQHz6vth2TRE922ZVb7WmeRzRJbrw==" ^
+ --data "buckets()"
+ 
+ 
+ 
+ 
+ from(bucket: "HydraulicSystem")
+  |> range(start:-15d)
+  |> filter(fn: (r) => r["signal"] == "FS1" and r["_field"] == "value")
+  |> aggregateWindow(every: 1h, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
